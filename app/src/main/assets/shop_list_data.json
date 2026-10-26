@@ -1,0 +1,382 @@
+[
+  {
+    "shopId": 1,
+    "shopName": "果然鲜果 · 城南旗舰店",
+    "logo": "file:///android_asset/img/shop/1.jpg",
+    "announcement": "满 39 减 6，全场第二件半价",
+    "score": 4.8,
+    "monthSale": 1268,
+    "deliveryFee": 2.0,
+    "minPrice": 15.0,
+    "deliverTime": "30分钟",
+    "distance": "1.2km",
+    "foods": [
+      {
+        "foodId": 101,
+        "foodName": "赣南脐橙",
+        "price": 19.9,
+        "ingredients": "赣南脐橙 · 单果 200g+",
+        "taste": "酸甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/101.jpg",
+        "description": "江西赣南产地直发，皮薄好剥，果肉细嫩化渣，酸甜比例刚好，剥开就能闻到橙香。"
+      },
+      {
+        "foodId": 102,
+        "foodName": "阳光玫瑰葡萄",
+        "price": 39.9,
+        "ingredients": "云南阳光玫瑰 · 无籽",
+        "taste": "清甜带玫瑰香",
+        "count": 0,
+        "image": "file:///android_asset/img/food/102.jpg",
+        "description": "云南大棚种植，糖度 18 度以上，果皮薄可以连皮吃，冷藏两小时风味最好。"
+      },
+      {
+        "foodId": 103,
+        "foodName": "海南小台芒",
+        "price": 25.9,
+        "ingredients": "海南小台芒 · 树上熟",
+        "taste": "香甜软糯",
+        "count": 0,
+        "image": "file:///android_asset/img/food/103.jpg",
+        "description": "三亚树上自然熟，果核薄，果肉细腻没有纤维，放软之后甜度最高。"
+      },
+      {
+        "foodId": 104,
+        "foodName": "丹东 99 草莓",
+        "price": 45.0,
+        "ingredients": "丹东 99 草莓 · 单果 25g+",
+        "taste": "甜中带酸",
+        "count": 0,
+        "image": "file:///android_asset/img/food/104.jpg",
+        "description": "辽宁东港产区，果肉紧实，草莓味重，当天采摘当天发出，收到不用洗太久。"
+      },
+      {
+        "foodId": 105,
+        "foodName": "烟台红富士",
+        "price": 22.8,
+        "ingredients": "烟台栖霞红富士 · 5 斤装",
+        "taste": "脆甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/105.jpg",
+        "description": "栖霞红富士，出冰糖心的概率高，咬着脆，放久了也不发面。"
+      },
+      {
+        "foodId": 106,
+        "foodName": "智利车厘子",
+        "price": 68.0,
+        "ingredients": "智利车厘子 · JJ 级 28-30mm",
+        "taste": "浓甜微酸",
+        "count": 0,
+        "image": "file:///android_asset/img/food/106.jpg",
+        "description": "智利进口 JJ 级，果径 28 到 30 毫米，果肉紧实，全程冷链到店。"
+      },
+      {
+        "foodId": 107,
+        "foodName": "麒麟西瓜",
+        "price": 32.0,
+        "ingredients": "海南麒麟瓜 · 整颗 8 斤左右",
+        "taste": "沙甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/107.jpg",
+        "description": "皮薄籽少，切开是沙瓤，冰镇之后更解渴，夏天必囤。"
+      }
+    ]
+  },
+  {
+    "shopId": 2,
+    "shopName": "果园直送 · 大学城店",
+    "logo": "file:///android_asset/img/shop/2.jpg",
+    "announcement": "学生党福利，免配送费，20 元起送",
+    "score": 4.7,
+    "monthSale": 892,
+    "deliveryFee": 0.0,
+    "minPrice": 20.0,
+    "deliverTime": "25分钟",
+    "distance": "0.8km",
+    "foods": [
+      {
+        "foodId": 108,
+        "foodName": "徐香猕猴桃",
+        "price": 26.9,
+        "ingredients": "陕西周至徐香 · 12 个装",
+        "taste": "酸甜清爽",
+        "count": 0,
+        "image": "file:///android_asset/img/food/108.jpg",
+        "description": "放软之后一勺挖着吃，果心小，甜度高，酸味不冲。"
+      },
+      {
+        "foodId": 201,
+        "foodName": "红心火龙果",
+        "price": 18.8,
+        "ingredients": "越南红心火龙果 · 2 个装",
+        "taste": "清甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/201.jpg",
+        "description": "果肉紫红，甜度比白心高一截，切块拌酸奶颜色很好看。"
+      },
+      {
+        "foodId": 202,
+        "foodName": "泰国金枕榴莲",
+        "price": 79.0,
+        "ingredients": "泰国金枕 · 纯果肉 300g",
+        "taste": "绵密浓香",
+        "count": 0,
+        "image": "file:///android_asset/img/food/202.jpg",
+        "description": "去壳纯果肉，冷链锁鲜，软糯香甜，不用自己开壳。"
+      },
+      {
+        "foodId": 203,
+        "foodName": "广西百香果",
+        "price": 16.9,
+        "ingredients": "广西紫皮百香果 · 6 个装",
+        "taste": "酸甜浓香",
+        "count": 0,
+        "image": "file:///android_asset/img/food/203.jpg",
+        "description": "果肉饱满，挖出来冲水加蜂蜜，就是一杯现做的果汁。"
+      },
+      {
+        "foodId": 204,
+        "foodName": "砀山酥梨",
+        "price": 15.8,
+        "ingredients": "安徽砀山酥梨 · 5 斤装",
+        "taste": "脆嫩多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/204.jpg",
+        "description": "皮薄核小，咬一口汁水直冒，秋冬拿来润喉正好。"
+      },
+      {
+        "foodId": 205,
+        "foodName": "云南蓝莓",
+        "price": 42.0,
+        "ingredients": "云南高原蓝莓 · 果径 14mm+",
+        "taste": "甜中带酸",
+        "count": 0,
+        "image": "file:///android_asset/img/food/205.jpg",
+        "description": "高原种植，果粉厚，颗粒饱满，洗一洗直接吃。"
+      }
+    ]
+  },
+  {
+    "shopId": 3,
+    "shopName": "每日鲜切 · 轻食果盒",
+    "logo": "file:///android_asset/img/shop/3.jpg",
+    "announcement": "现切现装，两小时送达，坏果包赔",
+    "score": 4.9,
+    "monthSale": 2130,
+    "deliveryFee": 3.0,
+    "minPrice": 12.0,
+    "deliverTime": "20分钟",
+    "distance": "0.5km",
+    "foods": [
+      {
+        "foodId": 402,
+        "foodName": "招牌缤纷果盒",
+        "price": 25.9,
+        "ingredients": "西瓜 · 哈密瓜 · 凤梨 · 火龙果",
+        "taste": "清爽多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/402.jpg",
+        "description": "当季水果现切拼盒，独立分格不串味，办公室下午茶首选。"
+      },
+      {
+        "foodId": 403,
+        "foodName": "西瓜果切",
+        "price": 12.9,
+        "ingredients": "麒麟西瓜 · 现切 350g",
+        "taste": "沙甜",
+        "count": 0,
+        "image": "file:///android_asset/img/food/403.jpg",
+        "description": "现切西瓜块，已经去过籽，开盒就能吃。"
+      },
+      {
+        "foodId": 404,
+        "foodName": "凤梨果切",
+        "price": 15.9,
+        "ingredients": "海南凤梨 · 去皮去芯 300g",
+        "taste": "甜中带微酸",
+        "count": 0,
+        "image": "file:///android_asset/img/food/404.jpg",
+        "description": "去皮去芯，盐水泡过，不扎嘴，酸甜开胃。"
+      },
+      {
+        "foodId": 405,
+        "foodName": "蜜瓜果切",
+        "price": 16.9,
+        "ingredients": "新疆西州蜜 · 现切 300g",
+        "taste": "香甜软糯",
+        "count": 0,
+        "image": "file:///android_asset/img/food/405.jpg",
+        "description": "西州蜜瓜糖度高，切块冷藏之后口感更清爽。"
+      },
+      {
+        "foodId": 406,
+        "foodName": "火龙果果切",
+        "price": 14.9,
+        "ingredients": "红心火龙果 · 现切 300g",
+        "taste": "清甜",
+        "count": 0,
+        "image": "file:///android_asset/img/food/406.jpg",
+        "description": "红心火龙果现切，颜色漂亮，拌酸奶一绝。"
+      },
+      {
+        "foodId": 407,
+        "foodName": "酸奶莓果杯",
+        "price": 19.9,
+        "ingredients": "希腊酸奶 · 蓝莓 · 草莓",
+        "taste": "酸甜顺滑",
+        "count": 0,
+        "image": "file:///android_asset/img/food/407.jpg",
+        "description": "无糖希腊酸奶打底，上面铺满蓝莓和草莓丁，当低负担代餐正好。"
+      }
+    ]
+  },
+  {
+    "shopId": 4,
+    "shopName": "山里红果园 · 城北店",
+    "logo": "file:///android_asset/img/shop/4.jpg",
+    "announcement": "自家果园直供，满 30 减 5",
+    "score": 4.6,
+    "monthSale": 536,
+    "deliveryFee": 2.5,
+    "minPrice": 18.0,
+    "deliverTime": "35分钟",
+    "distance": "2.4km",
+    "foods": [
+      {
+        "foodId": 206,
+        "foodName": "黄元帅苹果",
+        "price": 19.9,
+        "ingredients": "辽宁黄元帅 · 5 斤装",
+        "taste": "香甜绵软",
+        "count": 0,
+        "image": "file:///android_asset/img/food/206.jpg",
+        "description": "果香浓，放几天更面，适合老人和小孩。"
+      },
+      {
+        "foodId": 207,
+        "foodName": "库尔勒香梨",
+        "price": 24.9,
+        "ingredients": "新疆库尔勒香梨 · 5 斤装",
+        "taste": "清甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/207.jpg",
+        "description": "果皮薄，带一股独特的清香，冷藏之后更脆。"
+      },
+      {
+        "foodId": 208,
+        "foodName": "阳山水蜜桃",
+        "price": 39.9,
+        "ingredients": "无锡阳山水蜜桃 · 4 个装",
+        "taste": "蜜甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/208.jpg",
+        "description": "皮薄一撕就掉，汁水多到能吸着吃，熟透之后最香。"
+      },
+      {
+        "foodId": 301,
+        "foodName": "沾化冬枣",
+        "price": 22.9,
+        "ingredients": "山东沾化冬枣 · 500g",
+        "taste": "脆甜",
+        "count": 0,
+        "image": "file:///android_asset/img/food/301.jpg",
+        "description": "皮薄肉脆，个头均匀，咬下去嘎嘣响。"
+      },
+      {
+        "foodId": 302,
+        "foodName": "富平尖柿",
+        "price": 18.9,
+        "ingredients": "陕西富平尖柿 · 5 个装",
+        "taste": "蜜甜软糯",
+        "count": 0,
+        "image": "file:///android_asset/img/food/302.jpg",
+        "description": "自然脱涩，放软之后甜得像蜜，撕开一个小口就能吸。"
+      },
+      {
+        "foodId": 303,
+        "foodName": "会理石榴",
+        "price": 26.9,
+        "ingredients": "四川会理石榴 · 3 个装",
+        "taste": "清甜多汁",
+        "count": 0,
+        "image": "file:///android_asset/img/food/303.jpg",
+        "description": "籽粒紫红，一掰就开，汁多籽软，不用吐得太辛苦。"
+      }
+    ]
+  },
+  {
+    "shopId": 5,
+    "shopName": "进口果坊 · 环球精选",
+    "logo": "file:///android_asset/img/shop/5.jpg",
+    "announcement": "全程冷链，支持当面验货，不满意直接退",
+    "score": 4.5,
+    "monthSale": 418,
+    "deliveryFee": 5.0,
+    "minPrice": 30.0,
+    "deliverTime": "45分钟",
+    "distance": "3.1km",
+    "foods": [
+      {
+        "foodId": 304,
+        "foodName": "澳洲无籽红提",
+        "price": 45.9,
+        "ingredients": "澳洲红提 · 无籽 500g",
+        "taste": "浓甜",
+        "count": 0,
+        "image": "file:///android_asset/img/food/304.jpg",
+        "description": "果粒紧实，甜度高，冷藏之后更脆，小孩吃不用担心吐籽。"
+      },
+      {
+        "foodId": 305,
+        "foodName": "美国蛇果",
+        "price": 32.9,
+        "ingredients": "华盛顿蛇果 · 5 个装",
+        "taste": "甜中带酸",
+        "count": 0,
+        "image": "file:///android_asset/img/food/305.jpg",
+        "description": "果形高桩，颜色深红，口感偏粉脆，做沙拉也合适。"
+      },
+      {
+        "foodId": 306,
+        "foodName": "泰国山竹",
+        "price": 39.9,
+        "ingredients": "泰国 5A 山竹 · 500g",
+        "taste": "清甜微酸",
+        "count": 0,
+        "image": "file:///android_asset/img/food/306.jpg",
+        "description": "壳薄好剥，果肉雪白，冰镇之后更好吃，号称果中皇后。"
+      },
+      {
+        "foodId": 307,
+        "foodName": "菲律宾香蕉",
+        "price": 12.9,
+        "ingredients": "菲律宾进口蕉 · 1 把",
+        "taste": "软糯香甜",
+        "count": 0,
+        "image": "file:///android_asset/img/food/307.jpg",
+        "description": "自然熟成，果肉细腻，早餐配牛奶刚好。"
+      },
+      {
+        "foodId": 308,
+        "foodName": "墨西哥牛油果",
+        "price": 29.9,
+        "ingredients": "哈斯牛油果 · 3 个装",
+        "taste": "绵密清香",
+        "count": 0,
+        "image": "file:///android_asset/img/food/308.jpg",
+        "description": "按压微软就能吃，做沙拉或者抹面包都很合适。"
+      },
+      {
+        "foodId": 401,
+        "foodName": "泰国椰青",
+        "price": 22.9,
+        "ingredients": "泰国香水椰青 · 1 个",
+        "taste": "清甜",
+        "count": 0,
+        "image": "file:///android_asset/img/food/401.jpg",
+        "description": "开盖就能喝，椰水清甜，喝完还能把椰肉挖出来吃。"
+      }
+    ]
+  }
+]
