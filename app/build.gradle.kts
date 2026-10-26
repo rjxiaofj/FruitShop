@@ -34,7 +34,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.recyclerview)
     implementation(libs.viewpager2)
-    implementation(libs.okhttp)
     implementation(libs.gson)
     implementation(libs.picasso)
 }
