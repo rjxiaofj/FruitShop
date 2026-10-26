@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 公共标题栏标题 -->
+    <style name="title_bar_text">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- 购物车件数角标 -->
+    <style name="badge_style">
+        <item name="android:background">@drawable/badge_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">16dp</item>
+        <item name="android:minHeight">16dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+
+    <!-- 价格文字 -->
+    <style name="price_text">
+        <item name="android:textColor">@color/colorPrice</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 正文主标题 -->
+    <style name="text_main_16">
+        <item name="android:textColor">@color/textMain</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 辅助说明文字 -->
+    <style name="text_sub_12">
+        <item name="android:textColor">@color/textSub</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

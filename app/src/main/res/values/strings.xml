@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">鲜果集</string>
+    <string name="app_slogan">当日现摘 · 三小时送达</string>
+
+    <string name="title_home">鲜果集</string>
+    <string name="title_shop_detail">店铺详情</string>
+    <string name="title_order">确认订单</string>
+    <string name="title_order_history">我的订单</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_cart">购物车</string>
+    <string name="tab_user">我的</string>
+
+    <string name="loading">加载中…</string>
+    <string name="load_failed">加载失败，点击重试</string>
+    <string name="empty_data">这里还什么都没有</string>
+</resources>
