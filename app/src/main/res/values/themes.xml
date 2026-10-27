@@ -29,4 +29,19 @@
         <item name="android:windowExitAnimation">@anim/slide_top_to_bottom</item>
     </style>
 
+    <!-- 购物车明细弹窗，从底部滑出 -->
+    <style name="Theme.FruitShop.BottomSheet" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimStyle</item>
+    </style>
+
+    <!-- 通用提示弹窗 -->
+    <style name="Theme.FruitShop.Alert" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

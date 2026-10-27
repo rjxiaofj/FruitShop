@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="62dp"
+    android:background="@color/bgCard"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="14dp"
+    android:paddingRight="12dp">
+
+    <FrameLayout
+        android:id="@+id/fl_cart"
+        android:layout_width="46dp"
+        android:layout_height="46dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:contentDescription="购物车"
+            android:src="@drawable/ic_cart"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_badge"
+            style="@style/badge_style"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_gravity="top|end"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_total"
+            style="@style/price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥0.00"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_fee"
+            style="@style/text_sub_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_settle"
+        android:layout_width="106dp"
+        android:layout_height="40dp"
+        android:background="@drawable/payment_bg_selector"
+        android:gravity="center"
+        android:text="@string/settle"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

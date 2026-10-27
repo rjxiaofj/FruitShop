@@ -25,4 +25,17 @@
     <string name="shop_meta">月售 %1$d · 起送 ¥%2$s · 配送 ¥%3$s</string>
     <string name="shop_notice">公告：%1$s</string>
     <string name="shop_deliver">%1$s · %2$s</string>
+
+    <string name="menu">菜单</string>
+    <string name="settle">去结算</string>
+    <string name="cart_title">购物车</string>
+    <string name="cart_fee">另需配送费 ¥%1$s</string>
+    <string name="money">¥%1$s</string>
+    <string name="added_to_cart">已加入购物车</string>
+    <string name="clear_cart_title">清空购物车</string>
+    <string name="clear_cart_hint">清空后需要重新选购</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="cart_is_empty">购物车是空的，先加点水果吧</string>
+    <string name="below_min_price">还差 ¥%1$s 起送</string>
 </resources>
