@@ -14,6 +14,10 @@ public class Constant {
     /** assets 目录对应的 URI 前缀，Picasso 可以直接加载 */
     public static final String ASSET_BASE = "file:///android_asset/";
 
+    /** 页面跳转时传递实体的键名 */
+    public static final String EXTRA_SHOP = "shop";
+    public static final String EXTRA_FOOD = "food";
+
     /** 首页轮播广告图 */
     public static final String[] BANNERS = {
             ASSET_BASE + "img/banner/1.jpg",
