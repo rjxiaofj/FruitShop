@@ -38,4 +38,26 @@
     <string name="confirm">确定</string>
     <string name="cart_is_empty">购物车是空的，先加点水果吧</string>
     <string name="below_min_price">还差 ¥%1$s 起送</string>
+
+    <string name="add_to_cart">加入购物车</string>
+    <string name="order_receiver">收货信息</string>
+    <string name="hint_address">详细地址，例如 3 栋 502</string>
+    <string name="hint_name">联系人</string>
+    <string name="hint_phone">手机号</string>
+    <string name="order_goods">商品清单</string>
+    <string name="order_subtotal">商品小计</string>
+    <string name="order_delivery">配送费</string>
+    <string name="order_total">合计</string>
+    <string name="order_total_hint">含配送费 ¥%1$s</string>
+    <string name="pay">去支付</string>
+    <string name="qr_title">扫码支付</string>
+    <string name="qr_amount">应付 ¥%1$s</string>
+    <string name="qr_hint">请使用微信或支付宝扫码</string>
+    <string name="paid_done">我已完成支付</string>
+    <string name="order_success">下单成功</string>
+    <string name="pay_success">支付成功</string>
+    <string name="tips_address">请填写收货地址</string>
+    <string name="tips_phone">请填写 11 位手机号</string>
+    <string name="count_format">x%1$d</string>
+    <string name="free_delivery">免配送费</string>
 </resources>

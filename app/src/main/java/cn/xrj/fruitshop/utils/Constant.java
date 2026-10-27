@@ -17,6 +17,10 @@ public class Constant {
     /** 页面跳转时传递实体的键名 */
     public static final String EXTRA_SHOP = "shop";
     public static final String EXTRA_FOOD = "food";
+    public static final String EXTRA_SHOP_ID = "shop_id";
+    public static final String EXTRA_SHOP_NAME = "shop_name";
+    public static final String EXTRA_DELIVERY_FEE = "delivery_fee";
+    public static final String EXTRA_CART_LIST = "cart_list";
 
     /** 首页轮播广告图 */
     public static final String[] BANNERS = {

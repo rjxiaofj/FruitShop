@@ -1,6 +1,7 @@
 package cn.xrj.fruitshop.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.xrj.fruitshop.R;
@@ -114,7 +116,10 @@ public class ShopDetailActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(FoodBean food) {
-                // 商品详情页在后续步骤接上
+                Intent intent = new Intent(ShopDetailActivity.this, FoodActivity.class);
+                intent.putExtra(Constant.EXTRA_FOOD, food);
+                intent.putExtra(Constant.EXTRA_SHOP_ID, shop.getShopId());
+                startActivity(intent);
             }
         });
         rvMenu.setAdapter(menuAdapter);
@@ -137,6 +142,28 @@ public class ShopDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        findViewById(R.id.btn_settle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToOrder();
+            }
+        });
+    }
+
+    /** 把该店购物车整份传给订单页 */
+    private void goToOrder() {
+        List<CartBean> list = cartDao.listByShop(shop.getShopId());
+        if (list.isEmpty()) {
+            Toast.makeText(this, R.string.cart_is_empty, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, OrderActivity.class);
+        intent.putExtra(Constant.EXTRA_CART_LIST, new ArrayList<>(list));
+        intent.putExtra(Constant.EXTRA_SHOP_NAME, shop.getShopName());
+        intent.putExtra(Constant.EXTRA_SHOP_ID, shop.getShopId());
+        intent.putExtra(Constant.EXTRA_DELIVERY_FEE, shop.getDeliveryFee());
+        startActivity(intent);
     }
 
     private void refreshCartBar() {

@@ -27,6 +27,11 @@
             android:name=".activity.ShopDetailActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".activity.FoodActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FruitShop.Dialog" />
+
     </application>
 
 </manifest>
