@@ -11,3 +11,4 @@ local.properties
 *.apk
 素材/原始/
 .workbuddy-ai/
+.tmp/
