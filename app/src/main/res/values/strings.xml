@@ -14,4 +14,15 @@
     <string name="loading">加载中…</string>
     <string name="load_failed">加载失败，点击重试</string>
     <string name="empty_data">这里还什么都没有</string>
+    <string name="retry">重新加载</string>
+
+    <string name="cart_empty">购物车还是空的</string>
+    <string name="go_shopping">去逛逛</string>
+    <string name="not_login">未登录</string>
+    <string name="login_hint">登录后可以查看订单</string>
+    <string name="my_order">我的订单</string>
+
+    <string name="shop_meta">月售 %1$d · 起送 ¥%2$s · 配送 ¥%3$s</string>
+    <string name="shop_notice">公告：%1$s</string>
+    <string name="shop_deliver">%1$s · %2$s</string>
 </resources>
