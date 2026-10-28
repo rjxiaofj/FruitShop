@@ -15,6 +15,11 @@
         <item name="android:textColorSecondary">@color/textSub</item>
     </style>
 
+    <!-- 启动页主题，窗口背景直接用绿色渐变，避免启动瞬间白屏 -->
+    <style name="Theme.FruitShop.Splash" parent="Theme.FruitShop">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
     <!-- 商品详情用的对话框式 Activity 主题 -->
     <style name="Theme.FruitShop.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="android:windowIsFloating">true</item>
