@@ -90,4 +90,7 @@
     <string name="order_count">共 %1$d 件</string>
     <string name="order_empty">还没有订单</string>
     <string name="order_no">订单号 %1$s</string>
+    <string name="search_hint">搜店铺或水果</string>
+    <string name="search">搜索</string>
+    <string name="search_empty">没有找到相关店铺</string>
 </resources>

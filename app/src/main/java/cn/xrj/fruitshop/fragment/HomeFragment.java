@@ -1,12 +1,18 @@
 package cn.xrj.fruitshop.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -29,6 +35,7 @@ import cn.xrj.fruitshop.R;
 import cn.xrj.fruitshop.activity.ShopDetailActivity;
 import cn.xrj.fruitshop.adapter.BannerAdapter;
 import cn.xrj.fruitshop.adapter.ShopAdapter;
+import cn.xrj.fruitshop.bean.FoodBean;
 import cn.xrj.fruitshop.bean.ShopBean;
 import cn.xrj.fruitshop.utils.Constant;
 import cn.xrj.fruitshop.utils.JsonParse;
@@ -50,7 +57,12 @@ public class HomeFragment extends Fragment {
     private TextView tvError;
 
     private final List<ShopBean> shops = new ArrayList<>();
+    private final List<ShopBean> allShops = new ArrayList<>();
     private ShopAdapter shopAdapter;
+
+    private EditText etSearch;
+    private TextView tvEmpty;
+    private String keyword = "";
 
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private ExecutorService executor;
@@ -80,6 +92,7 @@ public class HomeFragment extends Fragment {
         initViews(view);
         setupBanner();
         setupShopList();
+        setupSearch();
         loadShops();
         mainHandler.postDelayed(bannerTask, BANNER_INTERVAL);
     }
@@ -93,6 +106,8 @@ public class HomeFragment extends Fragment {
         llError = view.findViewById(R.id.ll_error);
         llEmpty = view.findViewById(R.id.ll_empty);
         tvError = view.findViewById(R.id.tv_error);
+        tvEmpty = view.findViewById(R.id.tv_empty);
+        etSearch = view.findViewById(R.id.et_search);
 
         view.findViewById(R.id.btn_retry).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +154,77 @@ public class HomeFragment extends Fragment {
         rvShop.setAdapter(shopAdapter);
     }
 
+    private void setupSearch() {
+        View.OnClickListener searchClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                keyword = etSearch.getText().toString().trim();
+                applyFilter();
+                hideKeyboard();
+            }
+        };
+        requireView().findViewById(R.id.btn_search).setOnClickListener(searchClick);
+
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    keyword = etSearch.getText().toString().trim();
+                    applyFilter();
+                    hideKeyboard();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) requireContext()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+        }
+        etSearch.clearFocus();
+    }
+
+    /** 按关键词过滤，空关键词恢复全部 */
+    private void applyFilter() {
+        shops.clear();
+        if (TextUtils.isEmpty(keyword)) {
+            shops.addAll(allShops);
+        } else {
+            for (ShopBean shop : allShops) {
+                if (matches(shop, keyword)) {
+                    shops.add(shop);
+                }
+            }
+        }
+        shopAdapter.notifyDataSetChanged();
+        if (shops.isEmpty()) {
+            tvEmpty.setText(TextUtils.isEmpty(keyword)
+                    ? getString(R.string.empty_data) : getString(R.string.search_empty));
+            showEmpty();
+        } else {
+            showContent();
+        }
+    }
+
+    /** 店名或任一商品名包含关键词即命中 */
+    private boolean matches(ShopBean shop, String key) {
+        if (shop.getShopName() != null && shop.getShopName().contains(key)) {
+            return true;
+        }
+        if (shop.getFoods() != null) {
+            for (FoodBean food : shop.getFoods()) {
+                if (food.getFoodName() != null && food.getFoodName().contains(key)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private void loadShops() {
         showLoading();
         executor.execute(new Runnable() {
@@ -153,13 +239,9 @@ public class HomeFragment extends Fragment {
                                 return;
                             }
                             shops.clear();
-                            shops.addAll(list);
-                            shopAdapter.notifyDataSetChanged();
-                            if (shops.isEmpty()) {
-                                showEmpty();
-                            } else {
-                                showContent();
-                            }
+                            allShops.clear();
+                            allShops.addAll(list);
+                            applyFilter();
                         }
                     });
                 } catch (final Exception e) {
