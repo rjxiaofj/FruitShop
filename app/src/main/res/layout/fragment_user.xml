@@ -47,6 +47,7 @@
                     android:text="@string/not_login" />
 
                 <TextView
+                    android:id="@+id/tv_phone"
                     style="@style/text_sub_12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,6 +102,30 @@
                 android:contentDescription="进入"
                 android:src="@drawable/ic_arrow_right" />
         </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp">
+
+        <TextView
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/logout"
+            android:textColor="@color/colorPrice"
+            android:textSize="15sp" />
 
     </com.google.android.material.card.MaterialCardView>
 
