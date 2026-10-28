@@ -95,4 +95,6 @@
     <string name="search_empty">没有找到相关店铺</string>
     <string name="favorite_added">已收藏</string>
     <string name="favorite_removed">已取消收藏</string>
+    <string name="cart_shop_meta">共 %1$d 件 · 小计 ¥%2$s</string>
+    <string name="shop_fallback">店铺 %1$d</string>
 </resources>

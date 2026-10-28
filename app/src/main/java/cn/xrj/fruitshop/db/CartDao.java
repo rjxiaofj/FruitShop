@@ -99,6 +99,22 @@ public class CartDao {
         return list;
     }
 
+    /** 全部店铺的购物车条目，购物车页按店铺分组用 */
+    public List<CartBean> listAll() {
+        SQLiteDatabase db = helper.getReadableDatabase();
+        List<CartBean> list = new ArrayList<>();
+        Cursor cursor = db.query(DbHelper.TABLE_CART, null, null, null,
+                null, null, "shop_id ASC, id ASC");
+        try {
+            while (cursor.moveToNext()) {
+                list.add(readCursor(cursor));
+            }
+        } finally {
+            cursor.close();
+        }
+        return list;
+    }
+
     /** 该店购物车总件数 */
     public int countByShop(int shopId) {
         SQLiteDatabase db = helper.getReadableDatabase();
