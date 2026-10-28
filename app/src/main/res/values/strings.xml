@@ -60,4 +60,34 @@
     <string name="tips_phone">请填写 11 位手机号</string>
     <string name="count_format">x%1$d</string>
     <string name="free_delivery">免配送费</string>
+
+    <string name="login_title">手机号登录</string>
+    <string name="hint_login_phone">请输入手机号</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="hint_new_password">设置密码</string>
+    <string name="hint_password2">再次输入密码</string>
+    <string name="password_rule">密码 6-16 位，字母或数字</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="go_register">还没有账号，去注册</string>
+    <string name="go_login">已有账号，去登录</string>
+    <string name="register_title">注册新账号</string>
+    <string name="title_register">注册</string>
+    <string name="tips_phone_format">手机号格式不正确</string>
+    <string name="tips_password_length">密码需要 6-16 位</string>
+    <string name="tips_password_diff">两次输入的密码不一致</string>
+    <string name="tips_phone_exist">该手机号已注册</string>
+    <string name="tips_login_failed">手机号或密码错误</string>
+    <string name="tips_register_success">注册成功</string>
+    <string name="tips_login_success">登录成功</string>
+    <string name="tips_not_login">请先登录</string>
+    <string name="logout">退出登录</string>
+    <string name="tips_logout">已退出登录</string>
+    <string name="nickname_prefix">果友 %1$s</string>
+    <string name="order_status_unpaid">待付款</string>
+    <string name="order_status_paid">已支付</string>
+    <string name="order_status_done">已完成</string>
+    <string name="order_count">共 %1$d 件</string>
+    <string name="order_empty">还没有订单</string>
+    <string name="order_no">订单号 %1$s</string>
 </resources>

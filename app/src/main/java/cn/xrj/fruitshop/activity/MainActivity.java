@@ -1,5 +1,6 @@
 package cn.xrj.fruitshop.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import cn.xrj.fruitshop.R;
 import cn.xrj.fruitshop.fragment.CartFragment;
 import cn.xrj.fruitshop.fragment.HomeFragment;
 import cn.xrj.fruitshop.fragment.UserFragment;
+import cn.xrj.fruitshop.utils.UserManager;
 
 /**
  * 主页容器，底部导航切换三个 Fragment。
@@ -34,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 未登录先去登录页
+        if (!UserManager.getInstance(this).isLogin()) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
 
         tvTitle = findViewById(R.id.tv_title);
