@@ -2,26 +2,32 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title_bar"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:background="@drawable/bg_title_bar">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_title_bar"
+    android:fitsSystemWindows="true">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="44dp"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:src="@drawable/ic_back"
-        android:scaleType="centerInside"
-        android:contentDescription="返回" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
 
-    <TextView
-        android:id="@+id/tv_title"
-        style="@style/title_bar_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="56dp"
-        android:layout_marginRight="56dp"
-        android:text="@string/title_home" />
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/ic_back"
+            android:scaleType="centerInside"
+            android:contentDescription="返回" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_bar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="56dp"
+            android:layout_marginRight="56dp"
+            android:text="@string/title_home" />
+    </FrameLayout>
 
 </FrameLayout>
