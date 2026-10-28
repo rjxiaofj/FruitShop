@@ -1,5 +1,6 @@
 package cn.xrj.fruitshop.activity;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,12 +8,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.squareup.picasso.Picasso;
 
 import cn.xrj.fruitshop.R;
 import cn.xrj.fruitshop.bean.FoodBean;
 import cn.xrj.fruitshop.db.CartDao;
+import cn.xrj.fruitshop.db.FavoriteDao;
 import cn.xrj.fruitshop.utils.Constant;
 
 /**
@@ -23,6 +26,9 @@ public class FoodActivity extends AppCompatActivity {
     private FoodBean food;
     private int shopId;
     private CartDao cartDao;
+    private FavoriteDao favoriteDao;
+    private ImageView ivFavorite;
+    private boolean favorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class FoodActivity extends AppCompatActivity {
             return;
         }
         cartDao = new CartDao(this);
+        favoriteDao = new FavoriteDao(this);
         initView();
     }
 
@@ -74,5 +81,25 @@ public class FoodActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        ivFavorite = findViewById(R.id.iv_favorite);
+        favorite = favoriteDao.isFavorite(food.getFoodId());
+        showFavorite();
+        ivFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favorite = favoriteDao.toggle(shopId, food);
+                showFavorite();
+                Toast.makeText(FoodActivity.this,
+                        favorite ? R.string.favorite_added : R.string.favorite_removed,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /** 收藏时星标点亮成橙色，未收藏时是灰色 */
+    private void showFavorite() {
+        ivFavorite.setImageTintList(ColorStateList.valueOf(
+                ContextCompat.getColor(this, favorite ? R.color.colorStar : R.color.textSub)));
     }
 }

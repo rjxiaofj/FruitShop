@@ -10,11 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "fruitshop.db";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
 
     public static final String TABLE_CART = "cart";
     public static final String TABLE_ORDER = "orders";
     public static final String TABLE_ORDER_ITEM = "order_item";
+    public static final String TABLE_FAVORITE = "favorite";
 
     private static final String SQL_CREATE_CART =
             "CREATE TABLE " + TABLE_CART + " ("
@@ -46,6 +47,14 @@ public class DbHelper extends SQLiteOpenHelper {
                     + "price REAL NOT NULL,"
                     + "count INTEGER NOT NULL)";
 
+    private static final String SQL_CREATE_FAVORITE =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_FAVORITE + " ("
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "shop_id INTEGER NOT NULL,"
+                    + "food_id INTEGER NOT NULL,"
+                    + "food_name TEXT,"
+                    + "image TEXT)";
+
     private static volatile DbHelper instance;
 
     private DbHelper(Context context) {
@@ -68,13 +77,14 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_CART);
         db.execSQL(SQL_CREATE_ORDER);
         db.execSQL(SQL_CREATE_ORDER_ITEM);
+        db.execSQL(SQL_CREATE_FAVORITE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ORDER);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ORDER_ITEM);
-        onCreate(db);
+        // 只补新版本增加的表，已有购物车和订单数据保留
+        if (oldVersion < 2) {
+            db.execSQL(SQL_CREATE_FAVORITE);
+        }
     }
 }
