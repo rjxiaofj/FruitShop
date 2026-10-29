@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 主色：果叶绿 -->
-    <color name="colorPrimary">#2FA84F</color>
-    <color name="colorPrimaryDark">#1F7A38</color>
-    <color name="colorPrimaryLight">#E8F6EC</color>
+    <!-- 主色：果皮橙 -->
+    <color name="colorPrimary">#F57224</color>
+    <color name="colorPrimaryDark">#C45100</color>
+    <color name="colorPrimaryLight">#FFF3E8</color>
 
-    <!-- 辅助色：果肉橙 -->
-    <color name="colorAccent">#FF8A3D</color>
-    <color name="colorAccentLight">#FFF1E4</color>
+    <!-- 辅助色：亮橙 -->
+    <color name="colorAccent">#FF9D2E</color>
+    <color name="colorAccentLight">#FFF3E8</color>
 
     <!-- 价格与提示 -->
     <color name="colorPrice">#E8402A</color>
@@ -27,5 +27,5 @@
     <color name="mask">#66000000</color>
 
     <!-- 启动图标底色 -->
-    <color name="icLauncherBg">#2FA84F</color>
+    <color name="icLauncherBg">#F57224</color>
 </resources>
