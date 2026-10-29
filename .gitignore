@@ -12,3 +12,9 @@ local.properties
 素材/原始/
 .workbuddy-ai/
 .tmp/
+.tmp_*
+
+# 本地说明文档不进仓库
+项目说明.md
+项目说明.html
+one.md

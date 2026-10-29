@@ -1,19 +1,10 @@
 package cn.xrj.fruitshop.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,9 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ConcatAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +24,8 @@ import java.util.concurrent.Executors;
 
 import cn.xrj.fruitshop.R;
 import cn.xrj.fruitshop.activity.ShopDetailActivity;
-import cn.xrj.fruitshop.adapter.BannerAdapter;
+import cn.xrj.fruitshop.adapter.HomeEmptyAdapter;
+import cn.xrj.fruitshop.adapter.HomeHeaderAdapter;
 import cn.xrj.fruitshop.adapter.ShopAdapter;
 import cn.xrj.fruitshop.bean.FoodBean;
 import cn.xrj.fruitshop.bean.ShopBean;
@@ -41,43 +33,25 @@ import cn.xrj.fruitshop.utils.Constant;
 import cn.xrj.fruitshop.utils.JsonParse;
 
 /**
- * 首页：顶部轮播广告加店铺列表。
- * 数据在子线程读 assets，回到主线程刷新界面，加载中、失败、空数据三种状态都有对应视图。
+ * 首页：搜索栏和轮播是列表头部，跟店铺列表一起滚动。
+ * 数据在子线程读 assets，回到主线程刷新界面，加载中和失败有对应视图。
  */
-public class HomeFragment extends Fragment {
-
-    private static final long BANNER_INTERVAL = 3500L;
-
-    private ViewPager2 vpBanner;
-    private LinearLayout llDots;
-    private RecyclerView rvShop;
-    private ProgressBar pbLoading;
-    private LinearLayout llError;
-    private LinearLayout llEmpty;
-    private TextView tvError;
+public class HomeFragment extends Fragment implements HomeHeaderAdapter.OnSearchListener {
 
     private final List<ShopBean> shops = new ArrayList<>();
     private final List<ShopBean> allShops = new ArrayList<>();
-    private ShopAdapter shopAdapter;
 
-    private EditText etSearch;
-    private TextView tvEmpty;
+    private HomeHeaderAdapter headerAdapter;
+    private ShopAdapter shopAdapter;
+    private HomeEmptyAdapter emptyAdapter;
+
+    private RecyclerView rvHome;
+    private ProgressBar pbLoading;
+    private LinearLayout llError;
+    private TextView tvError;
     private String keyword = "";
 
-    private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private ExecutorService executor;
-
-    private final Runnable bannerTask = new Runnable() {
-        @Override
-        public void run() {
-            if (vpBanner == null) {
-                return;
-            }
-            int next = (vpBanner.getCurrentItem() + 1) % Constant.BANNERS.length;
-            vpBanner.setCurrentItem(next, true);
-            mainHandler.postDelayed(this, BANNER_INTERVAL);
-        }
-    };
 
     @Nullable
     @Override
@@ -90,24 +64,16 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
-        setupBanner();
-        setupShopList();
-        setupSearch();
+        setupList();
         loadShops();
-        mainHandler.postDelayed(bannerTask, BANNER_INTERVAL);
     }
 
     private void initViews(View view) {
         executor = Executors.newSingleThreadExecutor();
-        vpBanner = view.findViewById(R.id.vp_banner);
-        llDots = view.findViewById(R.id.ll_dots);
-        rvShop = view.findViewById(R.id.rv_shop);
+        rvHome = view.findViewById(R.id.rv_home);
         pbLoading = view.findViewById(R.id.pb_loading);
         llError = view.findViewById(R.id.ll_error);
-        llEmpty = view.findViewById(R.id.ll_empty);
         tvError = view.findViewById(R.id.tv_error);
-        tvEmpty = view.findViewById(R.id.tv_empty);
-        etSearch = view.findViewById(R.id.et_search);
 
         view.findViewById(R.id.btn_retry).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,31 +83,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void setupBanner() {
-        vpBanner.setAdapter(new BannerAdapter(Constant.BANNERS));
-        buildDots(0);
-        vpBanner.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                buildDots(position);
-            }
-        });
-    }
-
-    private void buildDots(int selected) {
-        llDots.removeAllViews();
-        int size = dp(6);
-        for (int i = 0; i < Constant.BANNERS.length; i++) {
-            View dot = new View(requireContext());
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(size, size);
-            lp.setMargins(dp(3), 0, dp(3), 0);
-            dot.setLayoutParams(lp);
-            dot.setBackgroundResource(i == selected ? R.drawable.dot_selected : R.drawable.dot_normal);
-            llDots.addView(dot);
-        }
-    }
-
-    private void setupShopList() {
+    private void setupList() {
+        headerAdapter = new HomeHeaderAdapter(Constant.BANNERS, this);
         shopAdapter = new ShopAdapter(shops, new ShopAdapter.OnShopClickListener() {
             @Override
             public void onShopClick(ShopBean shop) {
@@ -150,48 +93,25 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        rvShop.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvShop.setAdapter(shopAdapter);
+        emptyAdapter = new HomeEmptyAdapter();
+
+        ConcatAdapter concat = new ConcatAdapter(headerAdapter, shopAdapter, emptyAdapter);
+        rvHome.setLayoutManager(new LinearLayoutManager(requireContext()));
+        rvHome.setAdapter(concat);
+
+        headerAdapter.startBanner();
     }
 
-    private void setupSearch() {
-        View.OnClickListener searchClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                keyword = etSearch.getText().toString().trim();
-                applyFilter();
-                hideKeyboard();
-            }
-        };
-        requireView().findViewById(R.id.btn_search).setOnClickListener(searchClick);
-
-        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    keyword = etSearch.getText().toString().trim();
-                    applyFilter();
-                    hideKeyboard();
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
-    private void hideKeyboard() {
-        InputMethodManager imm = (InputMethodManager) requireContext()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null) {
-            imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
-        }
-        etSearch.clearFocus();
+    @Override
+    public void onSearch(String keyword) {
+        this.keyword = keyword;
+        applyFilter();
     }
 
     /** 按关键词过滤，空关键词恢复全部 */
     private void applyFilter() {
         shops.clear();
-        if (TextUtils.isEmpty(keyword)) {
+        if (keyword.isEmpty()) {
             shops.addAll(allShops);
         } else {
             for (ShopBean shop : allShops) {
@@ -201,12 +121,12 @@ public class HomeFragment extends Fragment {
             }
         }
         shopAdapter.notifyDataSetChanged();
+
         if (shops.isEmpty()) {
-            tvEmpty.setText(TextUtils.isEmpty(keyword)
+            emptyAdapter.setText(keyword.isEmpty()
                     ? getString(R.string.empty_data) : getString(R.string.search_empty));
-            showEmpty();
         } else {
-            showContent();
+            emptyAdapter.setText("");
         }
     }
 
@@ -232,7 +152,7 @@ public class HomeFragment extends Fragment {
             public void run() {
                 try {
                     final List<ShopBean> list = JsonParse.loadShopList(requireContext().getApplicationContext());
-                    mainHandler.post(new Runnable() {
+                    mainHandlerPost(new Runnable() {
                         @Override
                         public void run() {
                             if (!isAdded()) {
@@ -242,10 +162,11 @@ public class HomeFragment extends Fragment {
                             allShops.clear();
                             allShops.addAll(list);
                             applyFilter();
+                            showContent();
                         }
                     });
                 } catch (final Exception e) {
-                    mainHandler.post(new Runnable() {
+                    mainHandlerPost(new Runnable() {
                         @Override
                         public void run() {
                             if (!isAdded()) {
@@ -259,31 +180,25 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    private void mainHandlerPost(Runnable action) {
+        if (getActivity() == null) {
+            return;
+        }
+        new android.os.Handler(android.os.Looper.getMainLooper()).post(action);
+    }
+
     private void showLoading() {
         pbLoading.setVisibility(View.VISIBLE);
-        rvShop.setVisibility(View.GONE);
         llError.setVisibility(View.GONE);
-        llEmpty.setVisibility(View.GONE);
     }
 
     private void showContent() {
         pbLoading.setVisibility(View.GONE);
         llError.setVisibility(View.GONE);
-        llEmpty.setVisibility(View.GONE);
-        rvShop.setVisibility(View.VISIBLE);
-    }
-
-    private void showEmpty() {
-        pbLoading.setVisibility(View.GONE);
-        rvShop.setVisibility(View.GONE);
-        llError.setVisibility(View.GONE);
-        llEmpty.setVisibility(View.VISIBLE);
     }
 
     private void showError(String message) {
         pbLoading.setVisibility(View.GONE);
-        rvShop.setVisibility(View.GONE);
-        llEmpty.setVisibility(View.GONE);
         llError.setVisibility(View.VISIBLE);
         String text = (message == null || message.trim().isEmpty())
                 ? getString(R.string.load_failed) : message;
@@ -291,14 +206,12 @@ public class HomeFragment extends Fragment {
         Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
-    private int dp(int value) {
-        return (int) (getResources().getDisplayMetrics().density * value + 0.5f);
-    }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mainHandler.removeCallbacks(bannerTask);
+        if (headerAdapter != null) {
+            headerAdapter.stopBanner();
+        }
         if (executor != null) {
             executor.shutdownNow();
             executor = null;
